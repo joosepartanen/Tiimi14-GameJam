@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://da01vy6y27r1d"]
+
+[ext_resource type="PackedScene" uid="uid://c56xv1npw5t1t" path="res://Scenes/Kala.tscn" id="1_tumq0"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Kala" parent="." instance=ExtResource("1_tumq0")]
+position = Vector2(48, 85)
