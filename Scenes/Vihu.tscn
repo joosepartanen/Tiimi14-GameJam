@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvx0ex286ae17"]
+
+[ext_resource type="Texture2D" uid="uid://cpba8gnhoslth" path="res://Art/sprite_30.png" id="1_r4u5q"]
+[ext_resource type="Script" uid="uid://blrqm035slhuu" path="res://Scenes/vihu.gd" id="1_ucau0"]
+[ext_resource type="Texture2D" uid="uid://dj5g8qjgho75e" path="res://Art/sprite_31.png" id="2_vvpsj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kiom6"]
+size = Vector2(29, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1pbr"]
+atlas = ExtResource("1_r4u5q")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3s85"]
+atlas = ExtResource("2_vvpsj")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_orjt1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1pbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3s85")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}]
+
+[node name="Vihu" type="Area2D"]
+script = ExtResource("1_ucau0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(14.5, 0)
+shape = SubResource("RectangleShape2D_kiom6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_orjt1")
+animation = &"swim"

@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c56xv1npw5t1t"]
+[gd_scene load_steps=10 format=3 uid="uid://c56xv1npw5t1t"]
 
 [ext_resource type="Texture2D" uid="uid://cpba8gnhoslth" path="res://Art/sprite_30.png" id="1_ctdoh"]
 [ext_resource type="Script" uid="uid://bx8jveam6kgd1" path="res://Code/kala.gd" id="1_fcddx"]
 [ext_resource type="Texture2D" uid="uid://dj5g8qjgho75e" path="res://Art/sprite_31.png" id="2_fcddx"]
+[ext_resource type="Script" uid="uid://c77wslpfjmbq2" path="res://Code/health.gd" id="4_qfeji"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcddx"]
+atlas = ExtResource("2_fcddx")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfeji"]
 atlas = ExtResource("1_ctdoh")
@@ -14,6 +19,14 @@ region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6m7do"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcddx")
+}],
+"loop": true,
+"name": &"eat",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qfeji")
@@ -29,15 +42,22 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1o7wn"]
 size = Vector2(58, 20)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Kala" type="CharacterBody2D"]
 script = ExtResource("1_fcddx")
+speed = null
+dash_speed = null
+dash_time = null
+dash_cooldown = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -13)
 sprite_frames = SubResource("SpriteFrames_6m7do")
 animation = &"swim"
-frame_progress = 0.946252
+autoplay = "swim"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -13)
 shape = SubResource("RectangleShape2D_1o7wn")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("4_qfeji")
