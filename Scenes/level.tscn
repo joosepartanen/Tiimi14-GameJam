@@ -1,18 +1,65 @@
-[gd_scene load_steps=3 format=3 uid="uid://da01vy6y27r1d"]
+[gd_scene load_steps=7 format=3 uid="uid://da01vy6y27r1d"]
 
 [ext_resource type="PackedScene" uid="uid://c56xv1npw5t1t" path="res://Scenes/Kala.tscn" id="1_tumq0"]
 [ext_resource type="PackedScene" uid="uid://bii84nj5i1glb" path="res://Scenes/Saalis.tscn" id="2_k5f4k"]
+[ext_resource type="Script" uid="uid://di1odib6cw5x6" path="res://Code/PathFollower.gd" id="3_6phgx"]
+
+[sub_resource type="Curve2D" id="Curve2D_81xng"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 284, 176, 0, 0, 0, 0, 921, 175)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_6phgx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 924, 540, 0, 0, 0, 0, 970, 539, 0, 0, 0, 0, 1031, 541, 0, 0, 0, 0, 1028, 469, 0, 0, 0, 0, 835, 458, 0, 0, 0, 0, 816, 548, 0, 0, 0, 0, 677, 546, 0, 0, 0, 0, 648, 388, 0, 0, 0, 0, 574, 386, 0, 0, 0, 0, 454, 412, 0, 0, 0, 0, 444, 549, 0, 0, 0, 0, 331, 563, 0, 0, 0, 0, 301, 439, 0, 0, 0, 0, 302, 575, 0, 0, 0, 0, 164, 587)
+}
+point_count = 15
+
+[sub_resource type="Curve2D" id="Curve2D_wqkje"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 535, 611, 0, 0, 0, 0, 689, 599, 0, 0, 0, 0, 432, 579, 0, 0, 0, 0, 862, 574, 0, 0, 0, 0, 145, 563)
+}
+point_count = 5
 
 [node name="Level" type="Node2D"]
 
 [node name="Kala" parent="." instance=ExtResource("1_tumq0")]
 position = Vector2(48, 85)
 
-[node name="Saalis" parent="." instance=ExtResource("2_k5f4k")]
-position = Vector2(286, 177)
+[node name="Paths" type="Node2D" parent="."]
 
-[node name="Saalis2" parent="." instance=ExtResource("2_k5f4k")]
-position = Vector2(163, 307)
+[node name="Path2D" type="Path2D" parent="Paths"]
+curve = SubResource("Curve2D_81xng")
 
-[node name="Saalis3" parent="." instance=ExtResource("2_k5f4k")]
-position = Vector2(433, 475)
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D"]
+position = Vector2(284, 176)
+rotation = -0.0015698575
+script = ExtResource("3_6phgx")
+
+[node name="Saalis" parent="Paths/Path2D/PathFollow2D" instance=ExtResource("2_k5f4k")]
+position = Vector2(1.0046997, -2.998413)
+rotation = 0.0015698575
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="Path2D2" type="Path2D" parent="Paths"]
+position = Vector2(37, -45)
+curve = SubResource("Curve2D_6phgx")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D2"]
+position = Vector2(924, 540)
+rotation = -0.021735707
+script = ExtResource("3_6phgx")
+
+[node name="Saalis" parent="Paths/Path2D2/PathFollow2D" instance=ExtResource("2_k5f4k")]
+position = Vector2(-0.05419922, 4.119873)
+
+[node name="Path2D3" type="Path2D" parent="Paths"]
+curve = SubResource("Curve2D_wqkje")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D3"]
+position = Vector2(535, 611)
+rotation = -0.07776494
+script = ExtResource("3_6phgx")
+
+[node name="Saalis" parent="Paths/Path2D3/PathFollow2D" instance=ExtResource("2_k5f4k")]

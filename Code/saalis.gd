@@ -2,6 +2,9 @@ extends Collectable
 class_name Saalis
 
 @export var _score: int = 10
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+var _path_follower : PathFollower = null
+var prev_pos: Vector2
 
 func collect(kala : Kala) -> bool:
 	if not super.collect(kala):
@@ -10,3 +13,17 @@ func collect(kala : Kala) -> bool:
 	GameManager.add_score(_score)
 		
 	return true
+
+func _ready() -> void:
+	_path_follower = get_parent() as PathFollower
+	prev_pos = global_position
+	
+func _process(delta: float) -> void:
+	if _path_follower != null:
+		$AnimatedSprite2D.flip_h = _path_follower.direction < 0
+		var movement = global_position - prev_pos
+
+		if movement.length() > 0.001:
+			$AnimatedSprite2D.flip_v = movement.y > 0
+
+	prev_pos = global_position
