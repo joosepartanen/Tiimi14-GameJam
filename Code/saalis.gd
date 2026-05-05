@@ -5,6 +5,8 @@ class_name Saalis
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var _path_follower : PathFollower = null
 var prev_pos: Vector2
+var _speed: float = 100
+var direction = Vector2.RIGHT
 
 func collect(kala : Kala) -> bool:
 	if not super.collect(kala):
@@ -25,5 +27,9 @@ func _process(delta: float) -> void:
 
 		if movement.length() > 0.001:
 			$AnimatedSprite2D.flip_v = movement.y > 0
+			
+	else:
+		position += direction * _speed * delta
+		
 
 	prev_pos = global_position
