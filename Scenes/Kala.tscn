@@ -43,11 +43,8 @@ animations = [{
 size = Vector2(58, 20)
 
 [node name="Kala" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_fcddx")
-speed = null
-dash_speed = null
-dash_time = null
-dash_cooldown = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -13)
@@ -60,3 +57,5 @@ position = Vector2(3, -13)
 shape = SubResource("RectangleShape2D_1o7wn")
 
 [node name="Health" parent="." instance=ExtResource("4_qfeji")]
+
+[connection signal="health_changed" from="Health" to="." method="_on_health_changed"]

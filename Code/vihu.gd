@@ -1,12 +1,9 @@
 extends Area2D
 class_name Vihu
 
-# The health functionality
 @onready var health: Health = $Health
-# For animation control
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var damage_timer: Timer = $DamageTimer
-
 
 @export var bounce_force: float = -200
 @export var damage_time: float = 1
@@ -31,7 +28,6 @@ func _on_take_damage(body: Node2D) -> void:
 		
 		# Take damage
 		health.take_damage(1)
-		
 		var bounce_vector: Vector2 = Vector2(0, bounce_force)
 		kala.bounce(bounce_vector)
 
@@ -65,3 +61,4 @@ func _on_damage_other(body: Node2D) -> void:
 		
 		var bounce_vector: Vector2 = Vector2(0, bounce_force)
 		kala.bounce(bounce_vector)
+		

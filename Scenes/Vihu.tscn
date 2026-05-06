@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cvx0ex286ae17"]
 
 [ext_resource type="Texture2D" uid="uid://cpba8gnhoslth" path="res://Art/sprite_30.png" id="1_r4u5q"]
-[ext_resource type="Script" uid="uid://blrqm035slhuu" path="res://Scenes/vihu.gd" id="1_ucau0"]
+[ext_resource type="Script" uid="uid://blrqm035slhuu" path="res://Code/vihu.gd" id="1_ucau0"]
 [ext_resource type="Texture2D" uid="uid://dj5g8qjgho75e" path="res://Art/sprite_31.png" id="2_vvpsj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kiom6"]
@@ -39,3 +39,5 @@ shape = SubResource("RectangleShape2D_kiom6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_orjt1")
 animation = &"swim"
+
+[connection signal="body_entered" from="." to="." method="_on_damage_other"]

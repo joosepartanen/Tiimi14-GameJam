@@ -84,9 +84,10 @@ func _on_health_changed(previous_health: int, current_health: int) -> void:
 		_die()
 	elif current_health < previous_health:
 		# Heath is reduced
-		health.is_immortal = true
-		damage_timer.start(_damage_time)
-		damage_timer.timeout.connect(_on_timer_timeout)
+		#health.is_immortal = true
+		#damage_timer.start(_damage_time)
+		#damage_timer.timeout.connect(_on_timer_timeout)
+		print(current_health)
 		
 func _die() -> void:
 	return
@@ -94,5 +95,6 @@ func _die() -> void:
 func _on_timer_timeout() -> void:
 	damage_timer.timeout.disconnect(_on_timer_timeout)
 	health.is_immortal = false
+	
 func bounce(bounce_force: Vector2) -> void:
 	velocity += bounce_force
