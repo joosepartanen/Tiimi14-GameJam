@@ -41,6 +41,7 @@ func _on_health_changed(previous_health: int, current_health: int) -> void:
 		damage_timer.timeout.connect(_on_timer_timeout)
 		health.is_immortal = true
 		animated_sprite_2d.play("damage")
+		print(current_health, "vihu")
 
 func _on_timer_timeout() -> void:
 	damage_timer.timeout.disconnect(_on_timer_timeout)

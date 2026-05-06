@@ -1,11 +1,13 @@
-[gd_scene load_steps=19 format=4 uid="uid://da01vy6y27r1d"]
+[gd_scene load_steps=21 format=4 uid="uid://da01vy6y27r1d"]
 
+[ext_resource type="Script" uid="uid://c4kkard25fs7i" path="res://Scenes/level.gd" id="1_754fn"]
 [ext_resource type="PackedScene" uid="uid://c56xv1npw5t1t" path="res://Scenes/Kala.tscn" id="1_tumq0"]
 [ext_resource type="PackedScene" uid="uid://bii84nj5i1glb" path="res://Scenes/Saalis.tscn" id="2_k5f4k"]
 [ext_resource type="Script" uid="uid://di1odib6cw5x6" path="res://Code/PathFollower.gd" id="3_6phgx"]
 [ext_resource type="Script" uid="uid://ddcsw4cf255np" path="res://Code/spawner3.gd" id="4_81xng"]
 [ext_resource type="PackedScene" uid="uid://cvx0ex286ae17" path="res://Scenes/Vihu.tscn" id="4_wqkje"]
 [ext_resource type="Texture2D" uid="uid://cxy0n1me4e5ss" path="res://Art/world_tileset.png" id="6_0f350"]
+[ext_resource type="Script" uid="uid://di0rcq6rutkdh" path="res://Code/healthbar.gd" id="7_8c0lf"]
 
 [sub_resource type="Curve2D" id="Curve2D_81xng"]
 _data = {
@@ -564,6 +566,7 @@ texture = ExtResource("6_0f350")
 sources/0 = SubResource("TileSetAtlasSource_bvt00")
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_754fn")
 
 [node name="Kala" parent="." instance=ExtResource("1_tumq0")]
 position = Vector2(48, 85)
@@ -654,6 +657,13 @@ modulate = Color(0.025233677, 0.06428115, 0.06916067, 1)
 z_index = -4
 tile_map_data = PackedByteArray("AAA6ACgAAAAAAA8AAAA5ACgAAAAGAAEAAAA7ACgAAAAAAA8AAAA6ACYAAAAAAA8AAAA5ACYAAAAAAA8AAAA4ACcAAAAAAA8AAAA5ACcAAAAAAA8AAAA4ACYAAAAAAA8AAAA5ACUAAAAAAA8AAAA7ACYAAAAAAA8AAAA4ACUAAAAGAAEAAAA8ACYAAAAGAAEAAAA8ACcAAAAGAAEAAAA8ACgAAAAGAAEAAAA4ACgAAAAGAAEAAAA7ACcAAAAGAAEAAAA6ACcAAAAGAAEAAAA3ACYAAAAGAAEAAAA6ACUAAAAGAAEAAAA3ACgAAAAGAAEAAAA3ACcAAAAGAAEAAAA=")
 tile_set = SubResource("TileSet_oqgf2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Healthbar" type="HBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_8c0lf")
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="Spawner2/Timer" to="Spawner2" method="_on_timer_timeout"]

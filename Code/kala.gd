@@ -5,7 +5,7 @@ class_name Kala
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health: Health = $Health
 @onready var damage_timer: Timer = $DamageTimer
-@export var _damage_time : float = 1
+#@export var _damage_time : float = 1
 @export var dash_speed: float = 400.0
 @export var dash_time: float = 0.2
 @export var dash_cooldown: float = 0.5
@@ -90,7 +90,7 @@ func _on_health_changed(previous_health: int, current_health: int) -> void:
 		print(current_health)
 		
 func _die() -> void:
-	return
+	get_tree().reload_current_scene()
 	
 func _on_timer_timeout() -> void:
 	damage_timer.timeout.disconnect(_on_timer_timeout)
