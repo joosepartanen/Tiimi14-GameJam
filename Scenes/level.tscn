@@ -23,7 +23,7 @@ point_count = 16
 
 [sub_resource type="Curve2D" id="Curve2D_wqkje"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 535, 611, 0, 0, 0, 0, 689, 599, 0, 0, 0, 0, 432, 579, 0, 0, 0, 0, 862, 574, 0, 0, 0, 0, 145, 563)
+"points": PackedVector2Array(0, 0, 0, 0, 535, 611, 0, 0, 0, 0, 703, 614, 0, 0, 0, 0, 428, 611, 0, 0, 0, 0, 862, 574, 0, 0, 0, 0, 145, 563)
 }
 point_count = 5
 
@@ -591,10 +591,11 @@ position = Vector2(46, -82)
 curve = SubResource("Curve2D_6phgx")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D2"]
-position = Vector2(924, 540)
+position = Vector2(923.9783, 539.00024)
 rotation = -0.021735707
-rotates = false
+v_offset = -1.0
 script = ExtResource("3_6phgx")
+speed = 80.0
 
 [node name="Vihu" parent="Paths/Path2D2/PathFollow2D" instance=ExtResource("4_wqkje")]
 
@@ -603,7 +604,7 @@ curve = SubResource("Curve2D_wqkje")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D3"]
 position = Vector2(535, 611)
-rotation = -0.07776494
+rotation = 0.017855246
 script = ExtResource("3_6phgx")
 
 [node name="Vihu" parent="Paths/Path2D3/PathFollow2D" instance=ExtResource("4_wqkje")]

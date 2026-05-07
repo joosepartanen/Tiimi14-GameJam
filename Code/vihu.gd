@@ -9,14 +9,17 @@ class_name Vihu
 @export var damage_time: float = 1
 
 var _path_follower : PathFollower = null
+#asvar direction: Vector2 = Vector2.RIGHT
 
 func _ready() -> void:
 	_path_follower = get_parent() as PathFollower
-
+	#$AnimatedSprite2D.flip_v = true
+	
 func _process(_delta: float) -> void:
 	if _path_follower != null:
-		#animated_sprite_2d.flip_h = _path_follower.direction < 0
-		pass
+		animated_sprite_2d.flip_h = _path_follower.direction < 0
+		animated_sprite_2d.flip_v = global_transform.y.y < 0
+		
 
 func _on_take_damage(body: Node2D) -> void:
 	if body is Kala:
@@ -29,6 +32,8 @@ func _on_take_damage(body: Node2D) -> void:
 		
 		# Take damage
 		health.take_damage(1)
+		if health.get_current_health() == 0:
+			_die()
 		var bounce_vector: Vector2 = Vector2(0, bounce_force)
 		kala.bounce(bounce_vector)
 

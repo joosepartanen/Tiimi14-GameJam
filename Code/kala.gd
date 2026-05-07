@@ -25,7 +25,6 @@ func _on_score_changed(score):
 		health.set_max_health(5)
 		health.set_current_health(5)
 		health.heal(5)
-		print(health.get_current_health)
 	elif score == 100:
 		$AnimatedSprite2D.sprite_frames = load("res://Art/KalaPH1.tres")
 		speed = 200.0

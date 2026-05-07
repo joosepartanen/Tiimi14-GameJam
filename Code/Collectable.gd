@@ -4,7 +4,7 @@ class_name Collectable
 var is_collected : bool = false #kertoo onko kerätty jo vai ei
 
 func _on_body_entered(body: Node2D) -> void:
-	print("Something collided with a collectable")
+	#print("Something collided with a collectable")
 	if body is Kala:
 		if not collect(body as Kala):
 			print("Collecting didn't succeed")
