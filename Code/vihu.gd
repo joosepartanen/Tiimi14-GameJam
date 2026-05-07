@@ -8,16 +8,15 @@ class_name Vihu
 @export var bounce_force: float = -200
 @export var damage_time: float = 1
 
-var _path_follower : PathFollower = null
-#asvar direction: Vector2 = Vector2.RIGHT
+var path_follower : PathFollower = null
 
 func _ready() -> void:
-	_path_follower = get_parent() as PathFollower
+	path_follower = get_parent() as PathFollower
 	#$AnimatedSprite2D.flip_v = true
 	
 func _process(_delta: float) -> void:
-	if _path_follower != null:
-		animated_sprite_2d.flip_h = _path_follower.direction < 0
+	if path_follower != null:
+		animated_sprite_2d.flip_h = path_follower.direction < 0
 		animated_sprite_2d.flip_v = global_transform.y.y < 0
 		
 
