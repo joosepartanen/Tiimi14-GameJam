@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://da01vy6y27r1d"]
+[gd_scene load_steps=30 format=4 uid="uid://da01vy6y27r1d"]
 
 [ext_resource type="Script" uid="uid://c4kkard25fs7i" path="res://Scenes/level.gd" id="1_754fn"]
 [ext_resource type="PackedScene" uid="uid://c56xv1npw5t1t" path="res://Scenes/Kala.tscn" id="1_tumq0"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://c0sd8ckbu27r0" path="res://Scenes/vihuspawner.gd" id="6_bvt00"]
 [ext_resource type="Script" uid="uid://di0rcq6rutkdh" path="res://Code/healthbar.gd" id="7_8c0lf"]
 [ext_resource type="Script" uid="uid://3y6rwryvpdsi" path="res://Scenes/score.gd" id="10_oqgf2"]
+[ext_resource type="Script" uid="uid://b4s1udrli6y6v" path="res://Scenes/vihu_s.gd" id="11_ha31o"]
+[ext_resource type="Texture2D" uid="uid://dj5g8qjgho75e" path="res://Art/sprite_31.png" id="12_pa6b8"]
 
 [sub_resource type="Curve2D" id="Curve2D_81xng"]
 _data = {
@@ -579,6 +581,24 @@ texture = ExtResource("6_0f350")
 [sub_resource type="TileSet" id="TileSet_oqgf2"]
 sources/0 = SubResource("TileSetAtlasSource_bvt00")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7le1"]
+atlas = ExtResource("12_pa6b8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2klc5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7le1")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crh0w"]
+size = Vector2(13, 20)
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_754fn")
 
@@ -691,6 +711,7 @@ tile_set = SubResource("TileSet_8c0lf")
 modulate = Color(1, 1, 0.6509804, 0.6039216)
 z_index = -5
 scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD9/wAAAAAGAAoAAAD+/wAAAAAGAAoAAAD//wAAAAAGAAoAAAAAAAAAAAAGAAoAAAABAAAAAAAGAAoAAAACAAAAAAAGAAoAAAADAAAAAAAGAAoAAAAEAAAAAAAGAAoAAAAFAAAAAAAGAAoAAAAGAP//AAAGAAoAAAAHAP//AAAGAAoAAAAIAP//AAAGAAoAAAAIAAAAAAAGAAoAAAAJAAAAAAAGAAoAAAAGAAAAAAAGAAoAAAAHAAAAAAAGAAoAAAAKAAAAAAAGAAoAAAALAAAAAAAGAAoAAAAMAAAAAAAGAAoAAAANAAAAAAAGAAoAAAAQAAAAAAAGAAoAAAAPAAAAAAAGAAoAAAAOAAAAAAAGAAoAAAARAAAAAAAGAAoAAAASAAAAAAAGAAoAAAATAAAAAAAGAAoAAAAUAAAAAAAGAAoAAAAVAAAAAAAGAAoAAAAWAAAAAAAGAAoAAAAXAAAAAAAGAAoAAAAYAAAAAAAGAAoAAAAZAAAAAAAGAAoAAAAaAAAAAAAGAAoAAAAbAAAAAAAGAAoAAAAcAAAAAAAGAAoAAAAdAAAAAAAGAAoAAAAeAAAAAAAGAAoAAAAfAAAAAAAGAAoAAAAgAAAAAAAGAAoAAAAhAAAAAAAGAAoAAAAiAAAAAAAGAAoAAAAjAAAAAAAGAAoAAAAkAAAAAAAGAAoAAAAlAAAAAAAGAAoAAAAmAAAAAAAGAAoAAAAnAAAAAAAGAAoAAAAoAAAAAAAGAAoAAAApAAAAAAAGAAoAAAAqAAAAAAAGAAoAAAArAAAAAAAGAAoAAAAsAAAAAAAGAAoAAAAtAAAAAAAGAAoAAAAuAAAAAAAGAAoAAAAvAAAAAAAGAAoAAAAwAAAAAAAGAAoAAAAxAAAAAAAGAAoAAAAyAAAAAAAGAAoAAAAzAAAAAAAGAAoAAAA0AAAAAAAGAAoAAAA1AAAAAAAGAAoAAAA2AAAAAAAGAAoAAAA3AAAAAAAGAAoAAAA4AAAAAAAGAAoAAAA5AAAAAAAGAAoAAAA6AAAAAAAGAAoAAAA7AAAAAAAGAAoAAAA8AAAAAAAGAAoAAAA9AAAAAAAGAAoAAAA+AAAAAAAGAAoAAAA/AAAAAAAGAAoAAABAAAAAAAAGAAoAAABBAAAAAAAGAAoAAABCAAAAAAAGAAoAAABDAP//AAAGAAoAAABEAP//AAAGAAoAAABDAAAAAAAGAAoAAABEAAAAAAAGAAoAAABFAAAAAAAGAAoAAABGAAAAAAAGAAoAAABHAAAAAAAGAAoAAABIAAAAAAAGAAoAAABJAAAAAAAGAAoAAABKAAAAAAAGAAoAAABKAP//AAAGAAoAAABLAP//AAAGAAoAAABMAAAAAAAGAAoAAABNAAAAAAAGAAoAAABOAAAAAAAGAAoAAABPAAAAAAAGAAoAAABQAAAAAAAGAAoAAABRAAAAAAAGAAoAAABSAAAAAAAGAAoAAABTAAAAAAAGAAoAAABUAAAAAAAGAAoAAABVAAAAAAAGAAoAAABWAAAAAAAGAAoAAABXAAAAAAAGAAoAAABYAAAAAAAGAAoAAABZAAAAAAAGAAoAAABaAAAAAAAGAAoAAABbAAAAAAAGAAoAAABcAAAAAAAGAAoAAABdAAAAAAAGAAoAAABeAAAAAAAGAAoAAABfAAAAAAAGAAoAAABgAAAAAAAGAAoAAABLAAAAAAAGAAoAAAA=")
 tile_set = SubResource("TileSet_bvt00")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -720,6 +741,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("10_oqgf2")
 
+[node name="VihuS" type="CharacterBody2D" parent="."]
+script = ExtResource("11_ha31o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VihuS"]
+position = Vector2(-17, -1)
+scale = Vector2(1.03125, 1)
+sprite_frames = SubResource("SpriteFrames_2klc5")
+animation = &"swim"
+
+[node name="Area2D" type="Area2D" parent="VihuS"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VihuS/Area2D"]
+position = Vector2(4, 1)
+shape = SubResource("RectangleShape2D_crh0w")
+
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="spawn_enemy"]
 [connection signal="timeout" from="Spawner3/Timer" to="Spawner3" method="spawn_enemy"]
 [connection signal="timeout" from="Spawner2/Timer" to="Spawner2" method="_on_timer_timeout"]
+[connection signal="body_entered" from="VihuS/Area2D" to="VihuS" method="_on_damage_other"]

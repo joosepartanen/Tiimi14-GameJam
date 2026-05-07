@@ -54,7 +54,6 @@ func _on_timer_timeout() -> void:
 	animated_sprite_2d.play("default")
 
 func _die() -> void:
-	# TODO: Play animation, sound etc.
 	queue_free()
 
 func _on_damage_other(body: Node2D) -> void:
@@ -65,6 +64,6 @@ func _on_damage_other(body: Node2D) -> void:
 		
 		kala.health.take_damage(5)
 		
-		var bounce_vector: Vector2 = Vector2(0, bounce_force)
-		kala.bounce(bounce_vector)
+		#var bounce_vector: Vector2 = Vector2(0, bounce_force)
+		#kala.bounce(bounce_vector)
 		

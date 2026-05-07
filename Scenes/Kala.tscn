@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1o7wn"]
 size = Vector2(36, 20)
 
-[node name="Kala" type="CharacterBody2D"]
+[node name="Kala" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_fcddx")
 
