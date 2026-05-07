@@ -15,6 +15,6 @@ func setup(health: Health) -> void:
 	health.health_changed.connect(_on_health_changed)
 	_on_health_changed(health.max_health, health.max_health)
 
-func _on_health_changed(previous_health : int, current_health : int) -> void:
+func _on_health_changed(_previous_health : int, current_health : int) -> void:
 	for i in _hearts.size():
 		_hearts[i].visible = i < current_health

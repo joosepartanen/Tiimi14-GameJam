@@ -30,7 +30,7 @@ func _on_take_damage(body: Node2D) -> void:
 			return
 		
 		# Take damage
-		health.take_damage(1)
+		health.take_damage(3)
 		if health.get_current_health() == 0:
 			_die()
 		var bounce_vector: Vector2 = Vector2(0, bounce_force)
@@ -63,7 +63,7 @@ func _on_damage_other(body: Node2D) -> void:
 		if kala.health.is_immortal:
 			return
 		
-		kala.health.take_damage(1)
+		kala.health.take_damage(5)
 		
 		var bounce_vector: Vector2 = Vector2(0, bounce_force)
 		kala.bounce(bounce_vector)

@@ -2,7 +2,7 @@ extends Node
 signal score_changed(new_score : int)
 var _score : int = 0
 var _current_level : Level = null
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+#@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func reset() -> void:
 	set_score(0)
