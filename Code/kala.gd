@@ -16,6 +16,22 @@ var cooldown_timer = 0.0
 
 var direction: Vector2 = Vector2.RIGHT  #Oletuksena liike lähtee oikealle
 
+func _ready():
+	GameManager.score_changed.connect(_on_score_changed)
+
+func _on_score_changed(score):
+	if score == 30:
+		$AnimatedSprite2D.sprite_frames = load("res://Art/KalaPH2.tres")
+		health.set_max_health(5)
+		health.set_current_health(5)
+		health.heal(5)
+		print(health.get_current_health)
+	elif score == 100:
+		$AnimatedSprite2D.sprite_frames = load("res://Art/KalaPH1.tres")
+		speed = 200.0
+	elif score == 200:
+		pass
+
 func _physics_process(delta):
 	handle_dash(delta)
 	if not is_dashing:
@@ -54,6 +70,7 @@ func handle_input():
 		$AnimatedSprite2D.flip_h = false
 	elif Input.is_action_just_pressed("MoveUp"):
 		direction = Vector2.UP    
+		#$AnimatedSprite2D.sprite_frames = load("res://Art/Kalakokeilu.tres")
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.rotation_degrees = -90
 		$AnimatedSprite2D.play("swim")
@@ -63,7 +80,8 @@ func handle_input():
 		$AnimatedSprite2D.rotation_degrees = 90
 		$AnimatedSprite2D.play("swim")
 	elif Input.is_action_just_pressed("Dash"):
-		$AnimatedSprite2D.play("eat")
+		#$AnimatedSprite2D.play("eat")
+		pass
 		
 func handle_dash(delta):
 	if cooldown_timer > 0:

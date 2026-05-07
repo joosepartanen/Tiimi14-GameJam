@@ -14,11 +14,10 @@ func _ready() -> void:
 	GameManager.register_current_level(self)
 	healthbar.setup(kala.health)
 	
-	# Aseta ritarin aloituspiste
 	_spawn_point = kala.global_position
 	
 	# Toista musiikki
 	#music_player.play()
 
-func respawn_knight() -> void:
+func respawn_kala() -> void:
 	kala.global_position = _spawn_point

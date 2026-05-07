@@ -41,3 +41,7 @@ func heal(amount: int) -> bool:
 
 func reset() -> void:
 	set_current_health(max_health)
+	
+func set_max_health(value: int):
+	max_health = value
+	_current_health = clamp(_current_health, 0, max_health)

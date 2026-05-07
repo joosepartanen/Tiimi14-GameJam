@@ -593,6 +593,7 @@ curve = SubResource("Curve2D_6phgx")
 [node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D2"]
 position = Vector2(924, 540)
 rotation = -0.021735707
+rotates = false
 script = ExtResource("3_6phgx")
 
 [node name="Vihu" parent="Paths/Path2D2/PathFollow2D" instance=ExtResource("4_wqkje")]

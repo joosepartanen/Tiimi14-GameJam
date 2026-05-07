@@ -15,7 +15,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if _path_follower != null:
-		animated_sprite_2d.flip_h = _path_follower.direction < 0
+		#animated_sprite_2d.flip_h = _path_follower.direction < 0
+		pass
 
 func _on_take_damage(body: Node2D) -> void:
 	if body is Kala:

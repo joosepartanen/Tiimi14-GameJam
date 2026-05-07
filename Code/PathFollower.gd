@@ -13,6 +13,7 @@ var _move_speed : float = 0
 # Movement direction: -1 -> backwards, 1 -> forwards
 var direction : int = 1
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not can_move or not _validate_path():
