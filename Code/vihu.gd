@@ -5,7 +5,6 @@ class_name Vihu
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var damage_timer: Timer = $DamageTimer
 
-@export var bounce_force: float = -200
 @export var damage_time: float = 1
 
 var path_follower : PathFollower = null
@@ -28,8 +27,6 @@ func _on_take_damage(body: Node2D) -> void:
 		health.take_damage(3)
 		if health.get_current_health() == 0:
 			_die()
-		var bounce_vector: Vector2 = Vector2(0, bounce_force)
-		kala.bounce(bounce_vector)
 
 
 func _on_health_changed(previous_health: int, current_health: int) -> void:
