@@ -21,12 +21,12 @@ func _ready():
 
 func _on_score_changed(score):
 	if score == 30:
-		$AnimatedSprite2D.sprite_frames = load("res://Art/KalaPH2.tres")
+		$AnimatedSprite2D.sprite_frames = load("res://Art/Kala2.tres")
 		health.set_max_health(5)
 		health.set_current_health(5)
 		health.heal(5)
 	elif score == 100:
-		$AnimatedSprite2D.sprite_frames = load("res://Art/KalaPH1.tres")
+		$AnimatedSprite2D.sprite_frames = load("res://Art/Kala3.tres")
 		speed = 200.0
 	elif score == 200:
 		pass

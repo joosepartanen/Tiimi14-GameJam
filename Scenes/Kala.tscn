@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c56xv1npw5t1t"]
 
 [ext_resource type="Script" uid="uid://bx8jveam6kgd1" path="res://Code/kala.gd" id="1_fcddx"]
-[ext_resource type="SpriteFrames" uid="uid://bxxoadvckwwwk" path="res://Art/KalaPH1.tres" id="2_fcddx"]
+[ext_resource type="SpriteFrames" uid="uid://chuyopu8pebg6" path="res://Art/Kala1.tres" id="2_fcddx"]
 [ext_resource type="PackedScene" uid="uid://bn6pi7b8358v" path="res://Scenes/health.tscn" id="4_qfeji"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1o7wn"]

@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://chuyopu8pebg6"]
+
+[ext_resource type="Texture2D" uid="uid://bd87ile42ihf4" path="res://Art/Kala32px0.png" id="1_fa0ws"]
+[ext_resource type="Texture2D" uid="uid://dlo2freqorpdo" path="res://Art/Kala32px1.png" id="2_fd4rk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m7do"]
+atlas = ExtResource("1_fa0ws")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1o7wn"]
+atlas = ExtResource("2_fd4rk")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m7do")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1o7wn")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}]

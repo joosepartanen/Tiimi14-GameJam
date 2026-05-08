@@ -1,12 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvx0ex286ae17"]
+[gd_scene load_steps=14 format=3 uid="uid://cvx0ex286ae17"]
 
 [ext_resource type="Texture2D" uid="uid://cpba8gnhoslth" path="res://Art/sprite_30.png" id="1_r4u5q"]
 [ext_resource type="Script" uid="uid://blrqm035slhuu" path="res://Code/vihu.gd" id="1_ucau0"]
+[ext_resource type="Texture2D" uid="uid://cg75af02f2m2b" path="res://Art/vihu0.png" id="2_uv425"]
 [ext_resource type="Texture2D" uid="uid://dj5g8qjgho75e" path="res://Art/sprite_31.png" id="2_vvpsj"]
+[ext_resource type="Texture2D" uid="uid://bxm3r0ispyvyc" path="res://Art/vihu1.png" id="3_xxptm"]
 [ext_resource type="Script" uid="uid://c77wslpfjmbq2" path="res://Code/health.gd" id="4_swpmr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kiom6"]
-size = Vector2(30.5, 20)
+size = Vector2(56.5, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhelw"]
+atlas = ExtResource("2_uv425")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1acx"]
+atlas = ExtResource("3_xxptm")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e1pbr"]
 atlas = ExtResource("1_r4u5q")
@@ -20,13 +30,24 @@ region = Rect2(0, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_jhelw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1acx")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_e1pbr")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e3s85")
 }],
 "loop": true,
-"name": &"swim",
+"name": &"vanha",
 "speed": 5.0
 }]
 
@@ -36,13 +57,14 @@ animations = [{
 script = ExtResource("1_ucau0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-18.25, 1)
+position = Vector2(-5.25, 1)
 shape = SubResource("RectangleShape2D_kiom6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-6, 0)
 sprite_frames = SubResource("SpriteFrames_orjt1")
 animation = &"swim"
+autoplay = "swim"
 
 [node name="Damagers" type="Node2D" parent="."]
 
