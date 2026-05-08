@@ -26,8 +26,8 @@ func _on_score_changed(score):
 	elif score == 100:
 		$AnimatedSprite2D.sprite_frames = load("res://Art/Kala3.tres")
 		speed = 200.0
-	elif score == 200:
-		pass
+	elif score == 500:
+		print("Hyvin tehty!")
 
 func _physics_process(delta):
 	handle_dash(delta)
