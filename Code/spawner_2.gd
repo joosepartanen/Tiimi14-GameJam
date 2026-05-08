@@ -10,7 +10,7 @@ func spawn_saalis():
 	var saalis = saalis_scene.instantiate()
 
 	var screen_size = get_viewport_rect().size
-	var side = randi() % 4  # 0=left, 1=right, 2=top, 3=bottom
+	var side = randi() % 4 
 
 	var pos = Vector2()
 

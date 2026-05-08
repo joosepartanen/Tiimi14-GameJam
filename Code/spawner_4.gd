@@ -11,6 +11,6 @@ func spawn_saalis():
 	var saalis = saalis_scene.instantiate()
 	var screen_size = get_viewport_rect().size
 	saalis.global_position = Vector2(
-	-50,  # just outside left
+	-50, 
 	randf_range(0, screen_size.y))
 	add_child(saalis)

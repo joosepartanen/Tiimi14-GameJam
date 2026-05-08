@@ -1,20 +1,12 @@
 extends PathFollow2D
 class_name PathFollower
-# Speed in pixels / second
+
 @export var speed : float = 50
-# Can the character move or not
 @export var can_move : bool = true
-# The length in pixels
 var _path_length : float = -1
-
-# The desired speed on the path
 var _move_speed : float = 0
-
-# Movement direction: -1 -> backwards, 1 -> forwards
 var direction : int = 1
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not can_move or not _validate_path():
 		push_warning("PathFollower: The follower can't move.")
@@ -29,10 +21,7 @@ func _process(delta: float) -> void:
 
 func _validate_path() -> bool:
 	if _path_length >= 0:
-		# Path is already validated.
 		return true
-	
-	# Reference to the path
 	var path : Path2D = get_parent() as Path2D
 	if path == null or path.curve == null:
 		return false

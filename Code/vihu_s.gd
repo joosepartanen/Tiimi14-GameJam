@@ -31,7 +31,6 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-	# Play animation
 	if velocity.length() > 0:
 		animated_sprite.play("swim")
 	else:

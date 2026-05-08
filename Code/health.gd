@@ -19,10 +19,7 @@ func get_current_health() -> int:
 func set_current_health(value: int) -> void:
 	var previous_health: int = _current_health
 	
-	# Makes sure the value is always between 0 and max_health.
 	_current_health = clamp(value, 0, max_health)
-	
-	# Notify interested parties about health value's change
 	health_changed.emit(previous_health, _current_health)
 	
 func take_damage(amount: int) -> bool:

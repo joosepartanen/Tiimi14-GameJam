@@ -4,8 +4,6 @@ class_name Kala
 @export var speed: float = 120.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health: Health = $Health
-#@onready var damage_timer: Timer = $DamageTimer
-#@export var _damage_time : float = 1
 @export var dash_speed: float = 400.0
 @export var dash_time: float = 0.2
 @export var dash_cooldown: float = 0.5
@@ -69,7 +67,6 @@ func handle_input():
 		$AnimatedSprite2D.flip_h = false
 	elif Input.is_action_just_pressed("MoveUp"):
 		direction = Vector2.UP    
-		#$AnimatedSprite2D.sprite_frames = load("res://Art/Kalakokeilu.tres")
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.rotation_degrees = -90
 		$AnimatedSprite2D.play("swim")
@@ -100,19 +97,11 @@ func _on_health_changed(previous_health: int, current_health: int) -> void:
 	if current_health <= 0:
 		_die()
 	elif current_health < previous_health:
-		# Heath is reduced
-		#health.is_immortal = true
-		#damage_timer.start(_damage_time)
-		#damage_timer.timeout.connect(_on_timer_timeout)
-		#print(current_health)
 		pass
 		
 func _die() -> void:
 	get_tree().reload_current_scene.call_deferred()
 	
 func _on_timer_timeout() -> void:
-	#damage_timer.timeout.disconnect(_on_timer_timeout)
 	health.is_immortal = false
 	
-func bounce(bounce_force: Vector2) -> void:
-	velocity += bounce_force

@@ -12,7 +12,6 @@ var path_follower : PathFollower = null
 
 func _ready() -> void:
 	path_follower = get_parent() as PathFollower
-	#$AnimatedSprite2D.flip_v = true
 	
 func _process(_delta: float) -> void:
 	if path_follower != null:
@@ -23,13 +22,9 @@ func _process(_delta: float) -> void:
 func _on_take_damage(body: Node2D) -> void:
 	if body is Kala:
 		var kala : Kala = body as Kala
-		# When the knight is immortal, it has just taken damage.
-		# To prevent player from misusing this, prevent damaging enemy
-		# during this time.
 		if kala.health.is_immortal:
 			return
 		
-		# Take damage
 		health.take_damage(3)
 		if health.get_current_health() == 0:
 			_die()
@@ -41,7 +36,6 @@ func _on_health_changed(previous_health: int, current_health: int) -> void:
 	if current_health == 0:
 		_die()
 	if current_health < previous_health:
-		# Start damage timer
 		damage_timer.start(damage_time)
 		damage_timer.timeout.connect(_on_timer_timeout)
 		health.is_immortal = true
@@ -63,7 +57,4 @@ func _on_damage_other(body: Node2D) -> void:
 			return
 		
 		kala.health.take_damage(5)
-		
-		#var bounce_vector: Vector2 = Vector2(0, bounce_force)
-		#kala.bounce(bounce_vector)
 		

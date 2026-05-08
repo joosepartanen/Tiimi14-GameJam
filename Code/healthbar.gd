@@ -6,7 +6,7 @@ const Head = preload("uid://6v6clg0p3psa")
 var _hearts : Array[Control] = []
 
 func setup(health: Health) -> void:
-	# Create as many hearts as the max health is
+	# Sydänikoneiden luonti
 	for i in health.max_health:
 		var heart : Control = Head.instantiate() as Control
 		add_child(heart)
