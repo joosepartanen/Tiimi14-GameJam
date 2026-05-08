@@ -1,20 +1,19 @@
-[gd_scene load_steps=38 format=4 uid="uid://da01vy6y27r1d"]
+[gd_scene load_steps=33 format=4 uid="uid://da01vy6y27r1d"]
 
-[ext_resource type="Script" uid="uid://c4kkard25fs7i" path="res://Scenes/level.gd" id="1_754fn"]
+[ext_resource type="Script" uid="uid://c4kkard25fs7i" path="res://Code/level.gd" id="1_754fn"]
 [ext_resource type="PackedScene" uid="uid://c56xv1npw5t1t" path="res://Scenes/Kala.tscn" id="1_tumq0"]
 [ext_resource type="PackedScene" uid="uid://bii84nj5i1glb" path="res://Scenes/Saalis.tscn" id="2_k5f4k"]
 [ext_resource type="Script" uid="uid://di1odib6cw5x6" path="res://Code/PathFollower.gd" id="3_6phgx"]
 [ext_resource type="Script" uid="uid://ddcsw4cf255np" path="res://Code/spawner3.gd" id="4_81xng"]
 [ext_resource type="PackedScene" uid="uid://cvx0ex286ae17" path="res://Scenes/Vihu.tscn" id="4_wqkje"]
 [ext_resource type="Texture2D" uid="uid://cxy0n1me4e5ss" path="res://Art/world_tileset.png" id="6_0f350"]
-[ext_resource type="Script" uid="uid://c0sd8ckbu27r0" path="res://Scenes/vihuspawner.gd" id="6_bvt00"]
+[ext_resource type="Script" uid="uid://c0sd8ckbu27r0" path="res://Code/vihuspawner.gd" id="6_bvt00"]
 [ext_resource type="Script" uid="uid://di0rcq6rutkdh" path="res://Code/healthbar.gd" id="7_8c0lf"]
-[ext_resource type="Script" uid="uid://3y6rwryvpdsi" path="res://Scenes/score.gd" id="10_oqgf2"]
-[ext_resource type="Script" uid="uid://b4s1udrli6y6v" path="res://Scenes/vihu_s.gd" id="11_ha31o"]
+[ext_resource type="Script" uid="uid://cm6mnjfxi06ux" path="res://Code/spawner_4.gd" id="8_c7le1"]
+[ext_resource type="Script" uid="uid://3y6rwryvpdsi" path="res://Code/score.gd" id="10_oqgf2"]
+[ext_resource type="Script" uid="uid://b4s1udrli6y6v" path="res://Code/vihu_s.gd" id="11_ha31o"]
 [ext_resource type="Texture2D" uid="uid://cg75af02f2m2b" path="res://Art/vihu0.png" id="12_pa6b8"]
 [ext_resource type="Texture2D" uid="uid://bxm3r0ispyvyc" path="res://Art/vihu1.png" id="13_crh0w"]
-[ext_resource type="Texture2D" uid="uid://cv1ctr1ciefjk" path="res://Art/saalis0.png" id="14_c7le1"]
-[ext_resource type="Texture2D" uid="uid://cc3jcltb83k82" path="res://Art/saalis1.png" id="15_2klc5"]
 
 [sub_resource type="Curve2D" id="Curve2D_81xng"]
 _data = {
@@ -609,30 +608,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crh0w"]
 size = Vector2(17.5, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nngtn"]
-atlas = ExtResource("14_c7le1")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vofx3"]
-atlas = ExtResource("15_2klc5")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_pa6b8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nngtn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vofx3")
-}],
-"loop": true,
-"name": &"swim",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7le1"]
-
 [node name="Level" type="Node2D"]
 script = ExtResource("1_754fn")
 
@@ -726,6 +701,13 @@ script = ExtResource("4_81xng")
 wait_time = 2.0109999999999997
 autostart = true
 
+[node name="Spawner4" type="Node2D" parent="."]
+script = ExtResource("8_c7le1")
+
+[node name="Timer" type="Timer" parent="Spawner4"]
+wait_time = 5.1080000000000005
+autostart = true
+
 [node name="Background" type="TileMapLayer" parent="."]
 modulate = Color(0.9818757, 0.9818757, 0.8354162, 0.64705884)
 z_index = -10
@@ -792,17 +774,8 @@ frame_progress = 0.77980334
 position = Vector2(6.25, 1)
 shape = SubResource("RectangleShape2D_crh0w")
 
-[node name="Saalis2" type="Area2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Saalis2"]
-sprite_frames = SubResource("SpriteFrames_pa6b8")
-animation = &"swim"
-autoplay = "swim"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Saalis2"]
-shape = SubResource("RectangleShape2D_c7le1")
-
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="spawn_enemy"]
 [connection signal="timeout" from="Spawner3/Timer" to="Spawner3" method="spawn_enemy"]
 [connection signal="timeout" from="Spawner2/Timer" to="Spawner2" method="_on_timer_timeout"]
+[connection signal="timeout" from="Spawner4/Timer" to="Spawner4" method="_on_timer_timeout"]
 [connection signal="body_entered" from="VihuS/Area2D" to="VihuS" method="_on_damage_other"]

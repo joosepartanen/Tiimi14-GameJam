@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddl1ef2k7ofm0"]
+
+[ext_resource type="Script" uid="uid://b7i51gy5uc40n" path="res://Code/saalis_2.gd" id="1_wn2w5"]
+[ext_resource type="Texture2D" uid="uid://cv1ctr1ciefjk" path="res://Art/saalis0.png" id="2_apuu7"]
+[ext_resource type="Texture2D" uid="uid://cc3jcltb83k82" path="res://Art/saalis1.png" id="3_n4qus"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nngtn"]
+atlas = ExtResource("2_apuu7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vofx3"]
+atlas = ExtResource("3_n4qus")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pa6b8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nngtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vofx3")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7le1"]
+size = Vector2(28, 20)
+
+[node name="Saalis2" type="Area2D"]
+script = ExtResource("1_wn2w5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pa6b8")
+animation = &"swim"
+autoplay = "swim"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c7le1")
+
+[connection signal="body_entered" from="." to="." method="_on_damage_other"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
