@@ -100,6 +100,8 @@ func _on_health_changed(previous_health: int, current_health: int) -> void:
 		pass
 		
 func _die() -> void:
+	GameManager.reset()
+	queue_free()
 	get_tree().reload_current_scene.call_deferred()
 	
 func _on_timer_timeout() -> void:
